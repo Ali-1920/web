@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Connexion | CareConnect{% endblock %}
+{% block content %}
+<main class="auth-page shell">
+    <section class="auth-card card">
+        <div class="auth-icon">+</div>
+        <p class="eyebrow">Espace sécurisé</p>
+        <h1>Bon retour parmi nous.</h1>
+        <p class="auth-intro">Connectez-vous pour gérer vos rendez-vous et votre parcours de soins.</p>
+        {% if form.errors %}<div class="form-errors">Nom d’utilisateur ou mot de passe incorrect.</div>{% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}">
+            <button class="button form-button" type="submit">Se connecter <span>→</span></button>
+        </form>
+        <p class="auth-footer">Vous n’avez pas encore de compte ? <a href="{% url 'accueil' %}">Contactez le cabinet</a></p>
+    </section>
+</main>
+<style>
+    .auth-page { min-height: 620px; display: grid; place-items: center; padding-top: 3rem; padding-bottom: 3rem; }.auth-card { width: min(460px, 100%); padding: 2.5rem; }.auth-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 1.5rem; border-radius: 14px; background: #e5efff; color: var(--primary); font: 800 2rem/1 Manrope; }.auth-card h1 { margin: 0; font-size: 2rem; letter-spacing: -.04em; }.auth-intro, .auth-footer { color: var(--muted); line-height: 1.6; }.auth-card form { margin-top: 1.8rem; }.auth-card form p { display: flex; flex-direction: column; gap: .45rem; margin: 1rem 0; }.auth-card label { font-size: .9rem; font-weight: 700; }.auth-card input { padding: .85rem 1rem; border: 1px solid #d5deea; border-radius: 9px; font: inherit; }.auth-card input:focus { outline: 3px solid #1769e31f; border-color: var(--primary); }.auth-footer { margin-bottom: 0; font-size: .88rem; }.auth-footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
+</style>
+{% endblock %}

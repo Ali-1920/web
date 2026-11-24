@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Demande confirmée | CareConnect{% endblock %}
+{% block content %}
+<main class="success-page shell">
+    <section class="success-card card">
+        <div class="success-icon">✓</div>
+        <p class="eyebrow">Demande envoyée</p>
+        <h1>Votre rendez-vous est<br><span>en bonne voie.</span></h1>
+        <p>Votre demande a bien été enregistrée. Le cabinet vous contactera après confirmation du créneau choisi.</p>
+        <div class="success-actions"><a class="button" href="{% url 'accueil' %}">Retour à l’accueil</a><a class="button secondary" href="/api/appointments/">Voir mes rendez-vous</a></div>
+    </section>
+</main>
+<style>
+    .success-page { min-height: 620px; display: grid; place-items: center; padding-top: 3rem; padding-bottom: 3rem; }.success-card { width: min(650px, 100%); padding: 3.5rem 2rem; text-align: center; }.success-icon { display: grid; place-items: center; width: 72px; height: 72px; margin: 0 auto 1.5rem; border-radius: 50%; background: #dcf8ed; color: #07866c; font-size: 2rem; font-weight: 800; }.success-card h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.05em; line-height: 1.1; }.success-card h1 span { color: var(--primary); }.success-card > p:not(.eyebrow) { max-width: 460px; margin: 1.2rem auto; color: var(--muted); line-height: 1.7; }.success-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+</style>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Prendre rendez-vous | CareConnect{% endblock %}
+{% block content %}
+<main class="shell appointment-page">
+    <a class="back-link" href="{% url 'accueil' %}">← Retour à l’accueil</a>
+    <div class="appointment-layout">
+        <section class="appointment-intro">
+            <p class="eyebrow">Prise de rendez-vous</p>
+            <h1>Planifiez votre consultation en toute simplicité.</h1>
+            <p>Choisissez votre médecin, un créneau disponible et indiquez le motif de votre consultation.</p>
+            <div class="process"><div><span>1</span><strong>Choisissez votre médecin</strong></div><div><span>2</span><strong>Sélectionnez un créneau</strong></div><div><span>3</span><strong>Recevez la confirmation</strong></div></div>
+        </section>
+        <section class="appointment-card card">
+            <h2>Votre demande</h2>
+            <p class="form-subtitle">Les champs marqués sont nécessaires.</p>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+                {% for field in form %}
+                    <div class="field">{{ field.label_tag }}{{ field }}{{ field.errors }}</div>
+                {% endfor %}
+                <button class="button form-button" type="submit">Confirmer ma demande <span>→</span></button>
+            </form>
+            <p class="privacy-note">🔒 Vos informations restent confidentielles et sécurisées.</p>
+        </section>
+    </div>
+</main>
+<style>
+    .appointment-page { padding-top: 3rem; padding-bottom: 2rem; }.back-link { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 600; }.back-link:hover { color: var(--primary); }
+    .appointment-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 4rem; align-items: start; margin-top: 2rem; }.appointment-intro { padding-top: 1.5rem; }.appointment-intro h1 { margin: 0 0 1.2rem; font-size: clamp(2.3rem, 5vw, 3.7rem); letter-spacing: -.06em; line-height: 1.1; }.appointment-intro > p:not(.eyebrow) { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }.process { display: grid; gap: 1rem; margin-top: 3rem; }.process div { display: flex; align-items: center; gap: .8rem; color: var(--muted); font-size: .9rem; }.process span { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 50%; background: #e5efff; color: var(--primary); font-weight: 800; }
+    .appointment-card { padding: 2rem; }.appointment-card h2 { margin: 0; font-size: 1.45rem; }.form-subtitle { margin: .4rem 0 1.5rem; color: var(--muted); font-size: .88rem; }.field { margin-top: 1.15rem; }.field label { display: block; margin-bottom: .45rem; font-size: .9rem; font-weight: 700; }.field input, .field select, .field textarea { width: 100%; padding: .85rem 1rem; border: 1px solid #d5deea; border-radius: 9px; background: #fbfdff; color: var(--ink); font: inherit; }.field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid #1769e31f; border-color: var(--primary); }.errorlist { margin: .4rem 0 0; padding: 0; color: #bd2c2c; list-style: none; font-size: .82rem; }.form-errors { padding: .8rem; border-radius: 8px; background: #fff0ef; color: #b42318; font-size: .88rem; }.form-button { width: 100%; margin-top: 1.5rem; border: 0; cursor: pointer; font: inherit; }.privacy-note { margin: 1.2rem 0 0; color: var(--muted); text-align: center; font-size: .78rem; }
+    @media (max-width: 800px) { .appointment-layout { grid-template-columns: 1fr; gap: 1.5rem; }.appointment-intro { padding-top: 0; }.process { margin-top: 1.5rem; } }
+</style>
+{% endblock %}

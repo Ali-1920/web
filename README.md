@@ -1,7 +1,7 @@
-﻿# API backend du cabinet médical
+﻿# Gestion du cabinet médical
 
 Application Django 5.2 de gestion des médecins, patients, spécialités et
-rendez-vous, via l'administration Django et une API REST.
+rendez-vous, avec interface web, administration Django et API REST.
 
 Les applications métier sont `AccountApp` (utilisateurs, médecins, patients,
 spécialités) et `AppointmentApp` (rendez-vous). Le modèle utilisateur actif est
@@ -44,14 +44,18 @@ cela évite de relier un rendez-vous au mauvais patient. Les relations sont
 également protégées par une contrainte empêchant un médecin d'avoir deux
 rendez-vous au même créneau.
 
-Endpoints principaux :
+Pages principales :
 
+- `http://127.0.0.1:8000/` : accueil du cabinet
 - `http://127.0.0.1:8000/admin/` : back-office
 - `http://127.0.0.1:8000/api/specialties/` : spécialités
 - `http://127.0.0.1:8000/api/doctors/` : médecins
 - `http://127.0.0.1:8000/api/patients/` : patients
 - `http://127.0.0.1:8000/api/appointments/` : rendez-vous
-Les accès d’écriture de l’API nécessitent une
+- `http://127.0.0.1:8000/accounts/login/` : connexion
+
+Un patient connecté peut demander un rendez-vous depuis
+`/api/prendre-rendez-vous/`. Les accès d’écriture de l’API nécessitent une
 authentification ; les lectures restent publiques.
 
 L'API expose les ressources `specialties`, `doctors`, `patients` et

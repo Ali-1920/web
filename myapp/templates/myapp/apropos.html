@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Notre cabinet | CareConnect{% endblock %}
+{% block content %}
+<main class="shell about-page">
+    <section class="about-hero">
+        <p class="eyebrow">Notre mission</p>
+        <h1>La technologie au service<br><span>de votre bien-être.</span></h1>
+        <p>CareConnect rapproche les patients et les professionnels de santé avec une expérience simple, humaine et sécurisée.</p>
+    </section>
+    <section class="about-grid">
+        <article class="card about-card"><div class="feature-icon blue">✦</div><h2>Une approche humaine</h2><p>Chaque fonctionnalité est conçue pour vous faire gagner du temps et rendre votre parcours médical plus serein.</p></article>
+        <article class="card about-card"><div class="feature-icon green">⌁</div><h2>Des soins accessibles</h2><p>Consultez les spécialités et trouvez le professionnel qui correspond à vos besoins, où que vous soyez.</p></article>
+        <article class="card about-card"><div class="feature-icon orange">♧</div><h2>Une organisation fiable</h2><p>Vos rendez-vous sont centralisés et suivis avec clarté, du premier clic à la confirmation.</p></article>
+    </section>
+    <section class="about-banner card">
+        <div><p class="eyebrow">Commencez maintenant</p><h2>Votre prochain rendez-vous<br>est à quelques clics.</h2></div>
+        <a class="button" href="{% url 'request_appointment' %}">Prendre rendez-vous →</a>
+    </section>
+</main>
+<style>
+    .about-page { padding-top: 5rem; padding-bottom: 2rem; }
+    .about-hero { max-width: 720px; margin-bottom: 3rem; }
+    .about-hero h1 { margin: 0 0 1.2rem; font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -.06em; line-height: 1.08; }.about-hero h1 span { color: var(--primary); }
+    .about-hero > p:last-child { max-width: 620px; color: var(--muted); font-size: 1.15rem; line-height: 1.7; }
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }.about-card { padding: 1.6rem; }.about-card h2 { margin: 1.3rem 0 .6rem; font-size: 1.15rem; }.about-card p { color: var(--muted); line-height: 1.6; }
+    .about-banner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 4rem; padding: 2rem 2.4rem; background: var(--ink); color: white; }.about-banner h2 { margin: 0; font-size: 1.65rem; line-height: 1.25; }.about-banner .eyebrow { color: #7fb2ff; }
+    @media (max-width: 700px) { .about-page { padding-top: 3rem; }.about-grid { grid-template-columns: 1fr; }.about-banner { align-items: flex-start; flex-direction: column; } }
+</style>
+{% endblock %}

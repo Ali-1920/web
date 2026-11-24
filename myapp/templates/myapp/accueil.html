@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Accueil | CareConnect{% endblock %}
+{% block content %}
+<main>
+    <section class="hero shell">
+        <div class="hero-copy">
+            <p class="eyebrow">Votre santé, notre priorité</p>
+            <h1>Des soins de qualité, <span>à portée de clic.</span></h1>
+            <p class="hero-text">Trouvez le bon médecin, choisissez votre créneau et gérez vos rendez-vous en toute simplicité.</p>
+            <div class="hero-actions">
+                <a class="button" href="{% url 'request_appointment' %}">Prendre rendez-vous <span>→</span></a>
+                <a class="button secondary" href="/api/doctors/">Découvrir nos médecins</a>
+            </div>
+            <div class="trust-row"><span class="avatars">● ● ●</span><strong>+500 patients</strong><span>nous font confiance</span></div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-orb"></div>
+            <div class="doctor-card card">
+                <div class="doctor-photo">👩‍⚕️</div>
+                <div><strong>Dr. Sarah Martin</strong><small>Spécialiste en cardiologie</small><span class="availability">● Disponible aujourd’hui</span></div>
+            </div>
+            <div class="floating-card card"><span class="floating-icon">✓</span><div><strong>Rendez-vous confirmé</strong><small>Votre santé entre de bonnes mains</small></div></div>
+        </div>
+    </section>
+    <section class="admin-access shell card">
+        <div>
+            <p class="eyebrow">Espace gestion</p>
+            <h2>Accéder au backend du cabinet</h2>
+            <p>Gérez les médecins, les patients, les spécialités et les rendez-vous depuis l’administration Django.</p>
+        </div>
+        <a class="button secondary" href="{% url 'admin:index' %}">Ouvrir le backend <span>→</span></a>
+    </section>
+    <section class="stats shell">
+        <div><strong>25+</strong><span>Médecins experts</span></div>
+        <div><strong>12</strong><span>Spécialités médicales</span></div>
+        <div><strong>98%</strong><span>Patients satisfaits</span></div>
+        <div><strong>24/7</strong><span>Prise de rendez-vous</span></div>
+    </section>
+    <section class="why shell">
+        <div class="section-heading"><p class="eyebrow">Une expérience pensée pour vous</p><h2>Tout ce dont vous avez besoin,<br><span>au même endroit.</span></h2></div>
+        <div class="feature-grid">
+            <article class="feature card"><div class="feature-icon blue">⌕</div><h3>Trouvez votre médecin</h3><p>Accédez rapidement à des professionnels qualifiés selon votre besoin.</p><a href="/api/doctors/">Voir les médecins →</a></article>
+            <article class="feature card"><div class="feature-icon green">◷</div><h3>Réservez simplement</h3><p>Choisissez un créneau disponible en quelques secondes, sans attente.</p><a href="{% url 'request_appointment' %}">Réserver maintenant →</a></article>
+            <article class="feature card"><div class="feature-icon orange">♡</div><h3>Suivez vos rendez-vous</h3><p>Retrouvez toutes vos demandes et confirmations au même endroit.</p><a href="/accounts/login/">Accéder à mon espace →</a></article>
+        </div>
+    </section>
+</main>
+<style>
+    .hero { display: grid; grid-template-columns: 1fr .85fr; gap: 4rem; align-items: center; padding-top: 5.5rem; padding-bottom: 4rem; }
+    .hero h1 { max-width: 650px; margin: 0; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -.06em; line-height: 1.05; }
+    .hero h1 span, .section-heading h2 span { color: var(--primary); }
+    .hero-text { max-width: 550px; margin: 1.5rem 0; color: var(--muted); font-size: 1.12rem; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .trust-row { display: flex; align-items: center; gap: .5rem; margin-top: 2rem; color: var(--muted); font-size: .88rem; }
+    .avatars { color: var(--teal); letter-spacing: -.3rem; margin-right: .4rem; }
+    .hero-visual { position: relative; min-height: 430px; display: grid; place-items: center; }
+    .hero-orb { position: absolute; width: 370px; height: 370px; border-radius: 50%; background: linear-gradient(145deg, #dceeff, #c8e8ed); }
+    .doctor-card, .floating-card { position: absolute; z-index: 1; display: flex; align-items: center; gap: .8rem; padding: 1rem; }
+    .doctor-card { top: 72px; right: 0; width: 275px; }
+    .doctor-photo { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: #e8f3ff; font-size: 1.7rem; }
+    .doctor-card strong, .floating-card strong { display: block; font-size: .88rem; }
+    .doctor-card small, .floating-card small { display: block; margin-top: .25rem; color: var(--muted); font-size: .72rem; }
+    .availability { display: block; margin-top: .4rem; color: #0b8d72; font-size: .68rem; }
+    .floating-card { bottom: 65px; left: 0; width: 245px; }
+    .floating-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: #d9faee; color: #07866c; font-weight: 800; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1.35rem 2rem; border-radius: 15px; background: var(--ink); color: white; }
+    .stats div { padding: .3rem 1rem; border-right: 1px solid #ffffff1f; }
+    .stats div:last-child { border: 0; }
+    .stats strong { display: block; font-family: Manrope; font-size: 1.6rem; }
+    .stats span { color: #b6c4d9; font-size: .82rem; }
+    .why { padding-top: 6rem; padding-bottom: 3rem; }
+    .section-heading h2 { margin: 0 0 2rem; font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -.04em; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .feature { padding: 1.5rem; transition: transform .2s, box-shadow .2s; }
+    .feature:hover { transform: translateY(-5px); box-shadow: 0 20px 40px #14213d16; }
+    .feature-icon { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 12px; font-size: 1.4rem; font-weight: 700; }
+    .feature-icon.blue { background: #e7f0ff; color: var(--primary); }.feature-icon.green { background: #e2f8f1; color: #0a947d; }.feature-icon.orange { background: #fff0dd; color: #d97706; }
+    .feature h3 { margin: 1.2rem 0 .5rem; }.feature p { min-height: 52px; color: var(--muted); line-height: 1.55; font-size: .9rem; }.feature a { color: var(--primary); text-decoration: none; font-size: .87rem; font-weight: 700; }
+    .admin-access { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 2rem; padding: 1.5rem 2rem; }.admin-access h2 { margin: 0 0 .4rem; font-size: 1.3rem; }.admin-access p:not(.eyebrow) { margin: 0; color: var(--muted); line-height: 1.5; font-size: .9rem; }.admin-access .button.secondary { white-space: nowrap; border-color: #b9c9df; }
+    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 3.5rem; }.hero-visual { min-height: 330px; }.stats, .feature-grid { grid-template-columns: repeat(2, 1fr); }.stats div:nth-child(2) { border: 0; }.admin-access { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 480px) { .stats, .feature-grid { grid-template-columns: 1fr; }.stats div { border: 0; }.hero-orb { width: 280px; height: 280px; }.doctor-card { right: 0; }.floating-card { left: 0; } }
+</style>
+{% endblock %}
